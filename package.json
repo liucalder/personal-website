@@ -1,0 +1,25 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "my personal website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liucalder/personal-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/liucalder/personal-website/issues"
+  },
+  "homepage": "https://github.com/liucalder/personal-website#readme",
+  "dependencies": {
+    "three": "^0.175.0",
+    "vite": "^6.2.6"
+  }
+}
