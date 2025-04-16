@@ -1,56 +1,37 @@
-/* Reset layout and set default styles */
-* {
+*
+{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Set background color for the entire page */
-  body {
-    background: rgb(0, 119, 181);
-    font-family: Arial, sans-serif;
-    display: flex;
-  }
-  
-  /* Sidebar styles */
-  #navbar {
-    width: 200px;
-    height: 100vh;
-    background-color: #222;
-    padding-top: 20px;
+}
+
+html{
+    background: #1e1a20;
+}
+
+.webgl
+{
     position: fixed;
-    left: 0;
     top: 0;
-  }
-  
-  .nav {
-    list-style: none;
-  }
-  
-  .nav li {
-    margin: 20px 0;
-  }
-  
-  .nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    display: block;
-    transition: background 0.3s;
-  }
-  
-  .nav a:hover {
-    background-color: #444;
-  }
-  
-  /* Main content */
-  main {
-    margin-left: 200px;
-    padding: 40px;
-    color: white;
-  }
-  
-  section {
-    margin-bottom: 40px;
-  }
-  
+    left: 0;
+    outline: none;
+}
+
+
+.section
+{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    font-family: 'Cabin', sans-serif;
+    color: #ffeded;
+    text-transform: uppercase;
+    font-size: 7vmin;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+section:nth-child(odd)
+{
+    justify-content: flex-end;
+}
