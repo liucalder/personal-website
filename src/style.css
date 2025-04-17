@@ -1,37 +1,65 @@
-*
-{
+/* Reset */
+* {
     margin: 0;
     padding: 0;
-}
-
-html{
-    background: #1e1a20;
-}
-
-.webgl
-{
+    box-sizing: border-box;
+  }
+  
+  /* Navbar */
+  .navbar {
     position: fixed;
     top: 0;
     left: 0;
-    outline: none;
-}
-
-
-.section
-{
+    width: 100%;
+    background-color: #0f0f0f;
     display: flex;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-    font-family: 'Cabin', sans-serif;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+  
+  .navbar a:hover {
+    color: rgb(0, 128, 181);
+  }
+  
+  body {
+    padding-top: 70px;
+    background-color: #1e1a20;
     color: #ffeded;
-    text-transform: uppercase;
-    font-size: 7vmin;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-section:nth-child(odd)
-{
-    justify-content: flex-end;
-}
+    line-height: 1.5;
+    font-family: sans-serif;
+  }
+  
+  canvas.webgl {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    outline: none;
+  }
+  
+  .section {
+    padding: 100px 10% 2rem 10%;
+    font-size: 1.5rem;
+    z-index: 1;
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section h1,
+  .section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
