@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "deploy": "ls -R"
   },
   "repository": {
     "type": "git",
@@ -24,4 +25,5 @@
     "vercel": "^41.6.0",
     "vite": "^6.2.6"
   }
+  
 }
