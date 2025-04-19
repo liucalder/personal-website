@@ -1,7 +1,0 @@
-{
-    "routes": [
-      { "src": "/contact.html", "dest": "/contact.html" },
-      { "src": "/projects.html", "dest": "/projects.html" },
-      { "src": "/(.*)", "dest": "/index.html" }
-    ]
-  }
