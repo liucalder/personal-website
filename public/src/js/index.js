@@ -7,7 +7,7 @@ import GUI from 'lil-gui'
 const gui = new GUI()
 
 const parameters = {
-    materialColor: '#ffeded'
+    materialColor: '#ff8080'
 }
 
 gui
