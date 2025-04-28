@@ -42,34 +42,20 @@ const material = new THREE.MeshToonMaterial({
 
 // Meshes
 const objectsDistance = 4
-const mesh1 = new THREE.Mesh(
-    new THREE.TorusGeometry(1, 0.4, 16, 60),
-    material
-)
 const mesh2 = new THREE.Mesh(
     new THREE.ConeGeometry(1, 2, 32),
     material)
 
-const mesh3 = new THREE.Mesh(
-    new THREE.TorusKnotGeometry(0.8, 0.35, 100, 16),
-    material
-)
-
-mesh1.position.y = - objectsDistance * 0
 mesh2.position.y = - objectsDistance * 1
-mesh3.position.y = - objectsDistance * 2
-
-mesh1.position.x = 2
 mesh2.position.x = -2
-mesh3.position.x = 2
 
-scene.add(mesh1, mesh2, mesh3)
+scene.add(mesh2)
 
-const sectionMeshes = [ mesh1, mesh2, mesh3 ]
+const sectionMeshes = [mesh2]
 
 // Particles
 
-const particlesCount = 5000;
+const particlesCount = 1000;
 const positions = new Float32Array(particlesCount * 3)
 
 for (let i = 0; i < particlesCount; i++) {
