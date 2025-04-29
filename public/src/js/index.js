@@ -18,17 +18,17 @@ gui
         particlesMaterial.color.set(parameters.materialColor)
     })
 
-const toggleGuiButton = document.getElementById('toggle-gui')
-if (toggleGuiButton) {
-    toggleGuiButton.addEventListener('click', () => {
-        gui.domElement.style.display = gui.domElement.style.display === 'none' ? 'block' : 'none'
-    })
-}
+const guiButton = document.createElement('button')
+guiButton.innerText = 'Toggle GUI'
+guiButton.style.position = 'fixed'
+guiButton.style.top = '10px'
+guiButton.style.left = '10px'
+guiButton.style.zIndex = '1000'
+document.body.appendChild(guiButton)
 
-const currentPath = window.location.pathname
-if (currentPath.includes('aboutme.html')) {
-    gui.domElement.style.display = 'block'
-}
+guiButton.addEventListener('click', () => {
+    gui.domElement.style.display = gui.domElement.style.display === 'none' ? 'block' : 'none'
+})
 
 /**
  * Base
