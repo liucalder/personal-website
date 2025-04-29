@@ -5,7 +5,7 @@ import GUI from 'lil-gui'
  * Debug
  */
 const gui = new GUI()
-gui.domElement.style.display = 'none' // Hide the GUI initially
+gui.domElement.style.display = 'none'
 
 const parameters = {
     materialColor: '#ff8080'
@@ -22,7 +22,7 @@ const guiButton = document.createElement('button')
 guiButton.innerText = 'Toggle GUI'
 guiButton.style.position = 'fixed'
 guiButton.style.top = '10px'
-guiButton.style.right = '10px'
+guiButton.style.left = '10px'
 guiButton.style.zIndex = '1000'
 document.body.appendChild(guiButton)
 
