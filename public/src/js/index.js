@@ -1,5 +1,5 @@
-import * as THREE from 'three'
-import GUI from 'lil-gui'
+import * as THREE from 'https://unpkg.com/three@0.153.0/build/three.module.js'
+import GUI from 'https://unpkg.com/lil-gui@0.17.0/dist/lil-gui.esm.min.js'
 
 /**
  * Debug
@@ -18,53 +18,46 @@ gui
         particlesMaterial.color.set(parameters.materialColor)
     })
 
-const guiButton = document.createElement('button')
-guiButton.innerText = 'Toggle GUI'
-guiButton.style.position = 'fixed'
-guiButton.style.top = '10px'
-guiButton.style.left = '10px'
-guiButton.style.zIndex = '1000'
-document.body.appendChild(guiButton)
+const toggleGuiButton = document.getElementById('toggle-gui')
+if (toggleGuiButton) {
+    toggleGuiButton.addEventListener('click', () => {
+        gui.domElement.style.display = gui.domElement.style.display === 'none' ? 'block' : 'none'
+    })
+}
 
-guiButton.addEventListener('click', () => {
-    gui.domElement.style.display = gui.domElement.style.display === 'none' ? 'block' : 'none'
-})
+const currentPath = window.location.pathname
+if (currentPath.includes('aboutme.html')) {
+    gui.domElement.style.display = 'block'
+}
 
 /**
  * Base
  */
-// Canvas
 const canvas = document.querySelector('canvas.webgl')
-
-// Scene
 const scene = new THREE.Scene()
 
-// Objects
 const textureLoader = new THREE.TextureLoader()
-const gradientTexture = textureLoader.load('textures/gradients/3.jpg')
+const gradientTexture = textureLoader.load('/textures/gradients/3.jpg') // Adjusted path for Vercel (public/ as root)
 gradientTexture.magFilter = THREE.NearestFilter
 
-// Materials
 const material = new THREE.MeshToonMaterial({
     color: parameters.materialColor,
     gradientMap: gradientTexture
 })
 
-// Meshes
 const objectsDistance = 4
 const mesh2 = new THREE.Mesh(
     new THREE.ConeGeometry(1, 2, 32),
     material
 )
 
-mesh2.position.y = - objectsDistance * 1
+mesh2.position.y = -objectsDistance * 1
 mesh2.position.x = -2
 
 scene.add(mesh2)
 
 const sectionMeshes = [mesh2]
 
-// Particles
 const particlesCount = 1000
 const positions = new Float32Array(particlesCount * 3)
 
@@ -86,14 +79,10 @@ const particlesMaterial = new THREE.PointsMaterial({
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 scene.add(particles)
 
-// Lights
 const directionalLight = new THREE.DirectionalLight('#ffffff', 3)
 directionalLight.position.set(1, 1, 0)
 scene.add(directionalLight)
 
-/**
- * Sizes
- */
 const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
@@ -108,20 +97,13 @@ window.addEventListener('resize', () => {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
-// Group
 const cameraGroup = new THREE.Group()
 scene.add(cameraGroup)
 
-/**
- * Camera
- */
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
 camera.position.z = 6
 cameraGroup.add(camera)
 
-/**
- * Renderer
- */
 const renderer = new THREE.WebGLRenderer({
     alpha: true,
     canvas: canvas
@@ -144,9 +126,6 @@ window.addEventListener('mousemove', (event) => {
     cursor.y = event.clientY / sizes.height - 0.5
 })
 
-/**
- * Animate
- */
 const clock = new THREE.Clock()
 let previousTime = 0
 
@@ -155,7 +134,6 @@ const tick = () => {
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
 
-    // Animate Camera
     camera.position.y = -scrollY / sizes.height * objectsDistance
 
     const parallaxX = cursor.x * 0.5
@@ -163,16 +141,13 @@ const tick = () => {
     cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * 5 * deltaTime
     cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * 5 * deltaTime
 
-    // Animate meshes
     for (const mesh of sectionMeshes) {
         mesh.rotation.x = elapsedTime * 0.1
         mesh.rotation.y = elapsedTime * 0.12
     }
 
-    // Render
     renderer.render(scene, camera)
 
-    // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 }
 
