@@ -54,16 +54,16 @@ const mesh2 = new THREE.Mesh(
 mesh2.position.y = -objectsDistance * 1
 mesh2.position.x = -2
 
-scene.add(mesh2)
 
 const sectionMeshes = [mesh2]
 
 const particlesCount = 1000
 const positions = new Float32Array(particlesCount * 3)
+const pageHeight = document.body.scrollHeight;
 
 for (let i = 0; i < particlesCount; i++) {
     positions[i * 3 + 0] = (Math.random() - 0.5) * 10
-    positions[i * 3 + 1] = objectsDistance * 0.4 - Math.random() * objectsDistance * sectionMeshes.length
+    positions[i * 3 + 1] = (Math.random() - 0.5) * pageHeight / 100;
     positions[i * 3 + 2] = (Math.random() - 0.5) * 10
 }
 
