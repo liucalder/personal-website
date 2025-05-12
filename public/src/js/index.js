@@ -1,19 +1,21 @@
-// src/js/index.js
+
 import * as THREE from 'https://unpkg.com/three@0.153.0/build/three.module.js'
 import Materials from './materials.js'
 import Particles from './particles.js'
 import Debug from './debug.js'
+import Lights from './lights.js'
+import Renderer from './renderer.js'
 
 // Base
 const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
-// Materials and Particles
+// materials and particles
 const materials = new Materials()
 const particles = new Particles(materials.parameters.materialColor)
 scene.add(particles.particles)
 
-// Debug GUI
+// Debug
 new Debug(materials, particles)
 
 // Meshes
@@ -23,25 +25,20 @@ const mesh2 = new THREE.Mesh(
 )
 mesh2.position.y = -4
 mesh2.position.x = -2
-scene.add(mesh2)
+
 
 const sectionMeshes = [mesh2]
 
-// Lighting
-const directionalLight = new THREE.DirectionalLight('#ffffff', 3)
-directionalLight.position.set(1, 1, 0)
-scene.add(directionalLight)
+// Lights
+const lights = new Lights()
+scene.add(lights.directionalLight)
 
-// Camera and Renderer
-const camera = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 100)
-camera.position.z = 6
-const cameraGroup = new THREE.Group()
-cameraGroup.add(camera)
-scene.add(cameraGroup)
+// Camera and Renderer 
+const renderer = new Renderer(canvas)
+scene.add(renderer.cameraGroup)
 
-const renderer = new THREE.WebGLRenderer({ alpha: true, canvas })
-renderer.setSize(window.innerWidth, window.innerHeight)
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+// To render the scene:
+renderer.render(scene)
 
 // Resize Handler
 window.addEventListener('resize', () => {
@@ -66,16 +63,20 @@ const clock = new THREE.Clock()
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
-    camera.position.y = -scrollY / window.innerHeight * 4
-    cameraGroup.position.x += (cursor.x * 0.5 - cameraGroup.position.x) * 0.1
-    cameraGroup.position.y += (-cursor.y * 0.5 - cameraGroup.position.y) * 0.1
+    // Adjusting camera and camera group
+    renderer.camera.position.y = -scrollY / window.innerHeight * 4
+    renderer.cameraGroup.position.x += (cursor.x * 0.5 - renderer.cameraGroup.position.x) * 0.1
+    renderer.cameraGroup.position.y += (-cursor.y * 0.5 - renderer.cameraGroup.position.y) * 0.1
 
+    // Rotating section meshes
     for (const mesh of sectionMeshes) {
         mesh.rotation.x = elapsedTime * 0.1
         mesh.rotation.y = elapsedTime * 0.12
     }
 
-    renderer.render(scene, camera)
+    // Rendering
+    renderer.render(scene)
+
     window.requestAnimationFrame(tick)
 }
 tick()
