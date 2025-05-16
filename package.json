@@ -1,28 +1,27 @@
 {
   "name": "personal-website",
   "version": "1.0.0",
-  "description": "my personal website",
+  "description": "My personal website",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vite",
-    "build": "vite build",
-    "deploy": "ls -R"
+    "build": "vite build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liucalder/personal-website.git"
+    "url": "https://github.com/liucalder/personal-website.git"
   },
-  "author": "",
+  "author": "Calder Liu",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/liucalder/personal-website/issues"
   },
   "homepage": "https://github.com/liucalder/personal-website#readme",
   "dependencies": {
-    "lil-gui": "^0.20.0",
-    "three": "^0.175.0",
-    "vercel": "^41.6.0",
-    "vite": "^6.2.6"
+    "lil-gui": "^0.17.1",
+    "three": "^0.154.0",
+    "vite": "^4.x.x"
   }
 }
