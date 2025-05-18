@@ -37,11 +37,13 @@ scene.add(renderer.cameraGroup)
 const camera = renderer.camera
 
 // 3D Text
-const text3D = new Text3D(scene, {
-    text: 'Pong Game',
-    position: new THREE.Vector3(-2, 0.5, 0),
-    color: '#ff8080'
-})
+if (document.body.classList.contains('homepage')) {
+    const text3D = new Text3D(scene, {
+        text: 'Pong Game',
+        position: new THREE.Vector3(-2, 0.5, 0),
+        color: '#ff8080'
+    })
+}
 // const raycaster = new THREE.Raycaster()
 
 // const rayOrigin = new THREE.Vector3(0, 0, 6)  // Same as camera position
