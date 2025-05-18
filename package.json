@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/liucalder/personal-website#readme",
   "dependencies": {
-    "lil-gui": "^0.17.1",
+    "cannon-es": "^0.20.0",
+    "lil-gui": "^0.20.0",
     "three": "^0.154.0",
     "vite": "^4.x.x"
   }
